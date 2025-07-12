@@ -128,6 +128,9 @@ def test_double_vowel_break(word, expected):
         ("jorge", ["jor", "ge"]),
         ("zacarias", ["za", "ca", "ri", "as"]),
         ("rafael", ["ra", "fa", "el"]),
+        ("beatriz", ["be", "a", "triz"]),
+        ("giovana", ["gi", "o", "va", "na"]),
+        ("metusalem", ["me", "tu", "sa", "lem"])
     ],
 )
 def test_names(word, expected):

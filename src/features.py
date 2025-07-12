@@ -12,6 +12,7 @@ from lexical import (
 from dataclasses import dataclass
 from typing import Optional, List
 
+
 @dataclass
 class Featured:
     original: str
@@ -29,9 +30,10 @@ class Featured:
     rome_r_count: int
     potato_r_count: int
     laughed_r_count: int
+    gender: str
 
     @staticmethod
-    def from_name(word: str) -> "Featured":
+    def from_row(word: str, gender: str) -> "Featured":
         syllables = split_syllables(word)
 
         word = asciify(word)
@@ -43,9 +45,7 @@ class Featured:
             ending_consonant = None
         else:
             ending_consonant = word[-1]
-            ending_vowel = next(
-                (c for c in syllables[-1][::-1] if is_vowel(c)), None
-            )
+            ending_vowel = next((c for c in syllables[-1][::-1] if is_vowel(c)), None)
 
         nasal_count = count_nasal_phonemes(word)
         sharp_count = count_sharp_phonemes(word)
@@ -75,6 +75,6 @@ class Featured:
             rome_r_count=rome_r,
             potato_r_count=potato_r,
             laughed_r_count=laughed_r,
+            gender=gender,
         )
 
-print(asdict(Featured.from_name("Virginia")))

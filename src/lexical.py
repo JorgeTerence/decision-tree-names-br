@@ -1,7 +1,7 @@
 import unicodedata
 
 VOWELS = ["a", "i", "u", "e", "o", "y"]
-SKIPPABLE = ["l", "r", "s", "m", "n", "h"]
+SKIPPABLE = ["l", "r", "s", "m", "n", "h", "z"]
 
 NASAL_CONSONANTS = ["z", "d", "v", "g", "b"]
 SHARP_CONSONANTS = ["q", "k", "t", "p"]
@@ -41,12 +41,11 @@ def split_syllables(word: str) -> list[str]:
             breakpoints.append(i)
             current = ""
 
-        if char == "i" and is_vowel(next_char):
-            breakpoints.append(i + 1)
-            current = ""
-            continue
+        joint_i = char == "i" and is_vowel(next_char)
+        joint_a = char == "a" and next_char == "e"
+        joint_e = char == "e" and next_char == "a"
 
-        if char == "a" and next_char == "e":
+        if joint_a or joint_i or joint_e:
             breakpoints.append(i + 1)
             current = ""
             continue
