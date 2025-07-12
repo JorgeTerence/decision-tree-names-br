@@ -1,5 +1,5 @@
 import pytest
-from lib.lexical import split_syllables
+from src.lexical import split_syllables
 
 
 @pytest.mark.parametrize(
