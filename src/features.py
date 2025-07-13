@@ -10,7 +10,7 @@ from lexical import (
 
 
 from dataclasses import dataclass
-from typing import Optional, List
+from typing import Any, Hashable, Optional, List
 
 
 @dataclass
@@ -34,10 +34,10 @@ class Featured:
     gender: str
 
     @staticmethod
-    def from_dict(word: str, gender: str) -> "Featured":
-        syllables = split_syllables(word)
+    def from_row(row: dict[Hashable,Any]) -> "Featured":
+        syllables = split_syllables(row["name"])
 
-        word = asciify(word)
+        word = asciify(row["name"])
         normalized_syllables = split_syllables(word)
 
         ends_in_vowel = is_vowel(word[-1])
@@ -77,6 +77,6 @@ class Featured:
             rome_r_count=rome_r,
             potato_r_count=potato_r,
             laughed_r_count=laughed_r,
-            gender=gender,
+            gender=row["gender"],
         )
 
