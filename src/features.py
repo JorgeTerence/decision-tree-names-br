@@ -17,6 +17,7 @@ from typing import Optional, List
 class Featured:
     original: str
     syllables: List[str]
+    normalized_syllables: List[str]
     ends_in_vowel: bool
     ending_vowel: Optional[str]
     ending_consonant: Optional[str]
@@ -33,10 +34,11 @@ class Featured:
     gender: str
 
     @staticmethod
-    def from_row(word: str, gender: str) -> "Featured":
+    def from_dict(word: str, gender: str) -> "Featured":
         syllables = split_syllables(word)
 
         word = asciify(word)
+        normalized_syllables = split_syllables(word)
 
         ends_in_vowel = is_vowel(word[-1])
 
@@ -50,18 +52,18 @@ class Featured:
         nasal_count = count_nasal_phonemes(word)
         sharp_count = count_sharp_phonemes(word)
 
-        lower = word.lower()
-        a_count = lower.count("a")
-        i_count = lower.count("i")
-        u_count = lower.count("u")
-        e_count = lower.count("e")
-        o_count = lower.count("o")
+        a_count = word.count("a")
+        i_count = word.count("i")
+        u_count = word.count("u")
+        e_count = word.count("e")
+        o_count = word.count("o")
 
         rome_r, potato_r, laughed_r = count_r_pronounciations(word)
 
         return Featured(
             original=word,
             syllables=syllables,
+            normalized_syllables=normalized_syllables,
             ends_in_vowel=ends_in_vowel,
             ending_vowel=ending_vowel,
             ending_consonant=ending_consonant,
