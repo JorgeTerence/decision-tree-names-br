@@ -7,12 +7,12 @@
 - [ ] port to JavaScript
 - [ ] make an interactive website and collect feedback
 - [ ] make a LinkedIn post about this
-- [ ] increase the training set
+- [ ] expand the training set
 - [ ] add more features to the model
 
 ## Version 1.0
 
-**Training set length:** 151 rows
+**Training set length:** 164 rows
 
 ### Model features
 
@@ -31,4 +31,4 @@
 
 ---
 
-Special thanks to my professors, @Thiago Inocêncio and @Carlos Veríssimo for nurturing my interest in discovering new ways to bang my head against a computer screen. And for the patience to answer my never ending questions.
+Special thanks to my professors, [@Thiago Inocêncio](https://github.com/ThiagoInocencio) and [@Carlos Veríssimo](https://github.com/ProfVerissimoFatec) for nurturing my interest in discovering new ways to bang my head against a computer screen. And for the patience to answer my never ending questions.
